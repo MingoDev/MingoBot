@@ -1,15 +1,23 @@
 const Discord = require('discord.js');
-const client = new Discord.Client();
+const bot = new Discord.Client();
 const auth = require('./auth.json');
 
-client.on('ready', () => {
-    console.log(`Logged in as ${client.user.tag}!`);
+var isReady = true;
+
+bot.on('message', message => {
+    if (isReady && message.content === '!x')
+    {
+        isReady = false;
+        var voiceChannel = message.member.voiceChannel;
+        voiceChannel.join().then(connection =>
+        {
+            const dispatcher = connection.playFile('./assets/sounds/i_need_healing.mp3');
+            dispatcher.on("end", end => {
+                voiceChannel.leave();
+            });
+        }).catch(err => console.log(err));
+        isReady = true;
+    }
 });
 
-client.login(auth.token);
-
-client.on('message', msg => {
-  if (msg.content === 'ping') {
-    msg.reply('pong');
-  }
-});
+bot.login(auth.token);

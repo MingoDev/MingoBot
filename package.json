@@ -7,6 +7,19 @@
   "dependencies": {
     "discord.io": "https://github.com/woor/discord.io/tarball/gateway_v6",
     "discord.js": "^11.5.1",
+    "ffmpeg": "0.0.4",
     "winston": "^3.2.1"
-  }
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MingoDev/MingoBot.git"
+  },
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MingoDev/MingoBot/issues"
+  },
+  "homepage": "https://github.com/MingoDev/MingoBot#readme"
 }
